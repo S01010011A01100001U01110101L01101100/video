@@ -1,0 +1,122 @@
+CONFIG:
+    $ git --global user.name "Saul Torres" -----------|
+                                                    |---- //son los datos del usuario (user), que seran utilizados en todos los repositorios
+    $ git --global user.email "prueba@gmail.com"  ----|
+
+    $ git config --global core.abbrev 5
+        //cambia la longitud del id de los commit
+
+    $ git config --list
+        //muestra un listado de todos los datos de configuracion(en este caso GLOBAL)
+
+    $ git config --global core.editor "code --wait"
+        //solo se actualiza el archivo, cuando se cierra el visual
+
+$ git init 
+    //inicializa un repositorio en una carpeta
+
+VARIEDAD:
+    $ touch nuevo.txt
+        //crea un nuevo archivo llamado nuevo.txt
+
+    $ touch archivo1.txt archivo2.txt archivo3.txt  
+        //Crea varios nuevos archivos 
+
+    $ git mv archivo.txt archivoB.txt
+        //cambia el nombre del archivo de "archivo.txt" al nombre "archivoB.txt"
+
+    $ git mv archivo.txt ruta/archivo.txt
+        //mueve el archivo a otra ruta
+
+    $ git rm archivo.txt
+        //elimina un archivo
+
+PREPARANDO REPOSITORIO:
+    $ git add .
+        //guarda todos los cambios de los archuivos en el area de preparacion (si no existen los guarda)
+
+    $ git add archivo.txt
+        //guarda un archivo especifico en el area de preparacion
+
+    $ rm archivo.txt
+        //elimina un archivo especifico
+
+    $ git status
+        //Comprueba el area de preparacion (mostrando los datos guardados, los modificado y los que falta)
+
+    $ git status -s
+        //Es lo mismo que el $ git status, pero lo muestra de una forma mas agradable
+
+RESTAURAR:
+    $ git restore archivo.txt
+        //Restaura la version del archivo al punto que lo envio en el commit
+
+    $ git restore --hard
+        //Elimina el ultimo commit y retrocede al anterior(cambiando los archivos al anterior commit)
+
+    $ git checkout archivo.txt
+        //Restaura la version del archivo, desde que lo envio a preparacion ($ git add archivo.txt), si no hay, lo busca en el commit
+
+COMMIT:
+    $ git commit
+        //envia los datos de preparacion al repositorio
+
+    $ git commit -m "Se coloca texto"
+        //es un commit, pero al agregarle "-m" deja agregar un texto que explica las acciones enviados al repositorio
+
+    $ git log --name-only
+        // ve el historial completo en formato de un arbol
+
+    $ git log 
+        //muestra todo los commit enviado
+
+    $ git log --oneline
+        //Es como "git log", pero muestra los datos en un farmato mas reducido
+
+    $ git log -p -- archivo.txt
+        // Muestras todos los datos de un archivo, su ultima modificacion, el commit en el que esta guardado, muestra son los datos del archivo en el commit
+
+    $ git diff --staged
+        // Compara lo de commit con el repositorio (rojo en el commit, verde el area de preparacion)
+
+    $ git diff 44444 55555
+        // Muestra los dos commit y sus diferencias 
+
+    $ git diff --name-only 44444 55555
+        //Muestra los cambios de los 2 commit (archivos que se modificaron o son diferentes)
+
+    $ git diff --word-diff 44444 55555
+        //Muestra mas detallado los cambios de los dos commit (hasta en codigo)
+
+    $ git commit --amend 
+        //Abre la configuracion del ultimo commit, pudiendo modificarlo
+
+    $ git reset --soft 45a55 (id del commit)
+        //se va al commit de ese id y los commit credos despues, se eliminan
+
+    $ git reset --soft head-1 (numero)
+        //retrosede los commit, la cantidad de veces que el numero y los creados despues se eliminan
+
+RAMAS:
+    $ git branch 
+        //Verifica las ramas del repositorio
+
+    $ git branch modificar-dev
+        //Crea una nueva rama llamada modificar
+
+    $ git switch master 
+        //Switch es creado especificamente creado para moverse entre ramas
+
+NT: 
+  -Para guardar todos los cambios, se utilizan git add
+
+MARGE: Cuando una rama se desloga (para resolver fallos) y despues se retoma a la rama principal
+
+                                                    
+      (Rama que se desloga, sirve para solucionar fallos)     commit V1  ------  commit V2
+                                                            /                              \
+  Rama Master                                              /                                \
+      commit V1  ------  commit V2  ------  commit V3 ____/__________________________________\____  commit V4
+
+
+
